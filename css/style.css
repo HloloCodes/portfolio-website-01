@@ -65,7 +65,7 @@ body
 
 /* Profile Image Container in Home Section */
 .profile-container {
-  position: absolute; /* Position the container absolutely */
+  position: relative; /* Position the container absolutely */
   top: 50%; /* Center vertically within the parent */
   right: 5%; /* Align the profile image on the right */
   transform: translateY(-50%); /* Center alignment correction */
@@ -106,8 +106,11 @@ body
   font-size: 32px;
   font-weight: 700;
   opacity: 0;
-  animation: slideBottom 1s ease forwards;
+  animation: slideBottom 0.3s ease forwards;
   animation-delay: .7s;
+  color: #ef51ba;
+visibility: visible; /* Ensure it's not hidden */
+    opacity: 1; /* Ensure it's fully visible */
 }
 
 .home-content h3:nth-of-type(2){
@@ -123,13 +126,13 @@ body
   font-size: 56px;
   font-weight: 700;
   margin: -3px 0;
-  opacity: 0;
+  opacity: 1;
   animation: slideRight 1s ease forwards;
   animation-delay: 1s;
 }
 .home-content p {
   font-size: 20px;
-  opacity: 0;
+  opacity: 1;
   animation: slideLeft 1s ease forwards;
   animation-delay: 1s;
 }
@@ -158,7 +161,7 @@ body
 }
 .btn-box {
   display: inline-block;
-  padding: 12px 28px;
+  padding: 18px 28px;
   background: #fe1493;
   border-radius: 40px;
   font-size: 16px;
@@ -229,13 +232,8 @@ body
   transform: scale(1.1); /* Slightly enlarge the image */
   filter: brightness(1.2); /* Increase brightness for hover effect */
   cursor: pointer; /* Change to hand pointer on hover */
-}
-
-/* Optional: Adjust the background of the profile image if you want */
-.profile-pic:hover {
   box-shadow: 0 0 15px 10px rgba(0, 255, 255, 0.8), 0 0 25px 10px rgba(255, 20, 165, 0.8);
 }
-
 
 .about-text h2 {
   font-size: 60px;
@@ -273,14 +271,14 @@ body
   grid-gap: 40px;
   margin-top: 50px;
 }
-.services-list div{
+.services-list div {
 background-color: transparent;
 padding: 40px;
 font-size: 13px;
 font-weight: 13px;
 border-right: 10px;
 border-radius: 20px;
-transition: background 0.5s, transform 0.5s;
+transition:  0.5s, transform 0.5s;
 box-shadow: 1px 1px 20px #012290f7,
 1px 1px 40px #0053b8f7;
 }
@@ -324,14 +322,26 @@ box-shadow: 1px 1px 20px #012290f7,
 .services-list div:hover {
   transform: tanslateY(-10px);
 }
-section {
+/* Parent container for all sections */
+#section {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /* Stack sections vertically */
+  align-items: center;    /* Center sections horizontally */
+  gap: 20px;              /* Space between sections */
+  padding: 20px;
+}
+
+/* Center each section */
+.section {
+  width: 100%;            /* Take full width of the parent */
+  max-width: 1200px;      /* Restrict maximum width */
+  margin: 0 auto;         /* Center the section */
+  text-align: center;     /* Center text inside the section */
 }
 
 .container1 {
-  width: 600px;
-  height: 500px;
+  width: 50%;
+  height: 50%;
   padding: 75px 90px;
   margin-left: 120px;
 }
@@ -455,7 +465,13 @@ transform: scaleX(1);
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: flex-start;
+  position: relative;
 }
+.radial-bars circle {
+  r: 60; /* Reduce the radius of the circle */
+}
+
+
 .radial-bars .radial-bar {
   width: 50%;
   height: 150px;
@@ -560,7 +576,7 @@ transform: scaleX(1);
   padding: 70px;
 }
 .row {
-  position: absolute;
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
@@ -751,6 +767,18 @@ transform: scaleX(1);
   border-radius: 0.5rem;
 }
 
+@keyframes slideBottom {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideTop {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+
 
 @keyframes slideRight {
   0% {
@@ -762,7 +790,7 @@ transform: scaleX(1);
     opacity: 1;
   }
 }
-@keyframes slideLeft {
+/*@keyframes slideLeft {
   0% {
     transform: translateX(100px);
     opacity: 0;
@@ -793,7 +821,7 @@ transform: scaleX(1);
     opacity: 1;
   }
 }
-
+*/
 #section {
   display: flex;
   flex-wrap: wrap;
@@ -973,27 +1001,28 @@ transform: scaleX(1);
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: flex-start;
+  position: relative;
 }
 .radial-bars .radial-bar {
-  width: 50%;
-  height: 170px;
+  width: 40%;
+  height: 110px;
   margin-bottom: 10px;
   position: relative;
 }
 .radial-bars .radial-bar svg {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50% -50%) rotate(-90deg);
-  width: 120px;
-  height: 160px;
+  width: 60px;
+  height: 70px;
 }
 .radial-bars .radial-bar .progress-bar {
   stroke-width: 10;
-  stop-color: #000000;
+  stop-color: #1c0536;
   fill: transparent;
-  stroke-dasharray: 502;
-  stroke-dashoffset: 502;
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
   stroke-linecap: round;
   animation: animate-bar 1s linear forwards;
 }
@@ -1017,22 +1046,22 @@ transform: scaleX(1);
 
 @keyframes animate-path1 {
   100% {
-    stroke-dashoffse: 50;;
+    stroke-dashoffset: 50;;
   }
 }
 @keyframes animate-path2 {
   100% {
-    stroke-dashoffse: 175;;
+    stroke-dashoffset: 175;;
   }
 }
 @keyframes animate-path3 {
   100% {
-    stroke-dashoffse: 125;;
+    stroke-dashoffset: 125;;
   }
 }
 @keyframes animate-path4 {
   100% {
-    stroke-dashoffse: 75;;
+    stroke-dashoffset: 75;;
   }
 }
 .radial-bar .percentage {
@@ -1269,6 +1298,40 @@ transform: scaleX(1);
   border-radius: 0.5rem;
 }
 
+/* For tablets */
+@media (max-width: 768px) {
+  .section {
+    padding: 10px;
+    max-width: 90%; /* Reduce the width for smaller screens */
+  }
+
+  #section {
+    gap: 15px; /* Reduce the spacing between sections */
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  .section {
+    padding: 5px;
+    max-width: 95%;
+  }
+
+  #section {
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 80px; /* Scale down profile picture */
+    height: 80px;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%; /* Make them circular */
+}
+
 
 @keyframes slideRight {
   0% {
@@ -1310,5 +1373,12 @@ transform: scaleX(1);
     transform: translateY(0px);
     opacity: 1;
   }
+}
+footer {
+  margin-top: 100px; /* Adds space above the footer */
+}
+
+.contact-section {
+  margin-top: 80px; /* Adds space above the contact section */
 }
 
